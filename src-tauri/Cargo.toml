@@ -1,0 +1,41 @@
+[package]
+name = "voicemap"
+version = "0.1.0"
+description = "VoiceMap - AI-powered voice recording and transcription app"
+authors = ["VoiceMap Team"]
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+
+[dependencies]
+tauri = { version = "2.0", features = ["devtools"] }
+tauri-plugin-dialog = "2.0"
+tauri-plugin-fs = "2.0"
+tauri-plugin-shell = "2.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+anyhow = "1"
+thiserror = "1"
+
+# Audio processing
+cpal = "0.15"
+hound = "3.5"
+
+# Encryption
+aes-gcm = "0.10"
+argon2 = "0.5"
+rand = "0.8"
+
+# Storage
+rusqlite = { version = "0.31", features = ["bundled"] }
+dirs = "5"
+
+# LLM/API communication
+reqwest = { version = "0.11", features = ["json", "multipart"] }
+async-trait = "0.1"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
